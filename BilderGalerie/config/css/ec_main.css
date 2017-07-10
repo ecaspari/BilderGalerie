@@ -1,0 +1,11 @@
+
+
+body {
+    /* Möglichkeit 1:
+	background-image: url("images/img04.jpg");
+           background-repeat: repeat-x left bottom;	
+	
+	Möglichkeit 2 (so wirds in 'Tapestry' gemacht):*/
+	background: #FFF2CF url(images/img01.png) repeat;
+}
+

@@ -1,0 +1,218 @@
+<galerydefinitions>
+   <comment>
+      Anleitung:
+      im header-Element steht der Beginn des zu erstellenden HTML-Files (als CDATA) und in footer als CDATA das Ende des Files.
+      unter picdef steht, ebenfalls als CDATA, der Code für ein einzelnes Bildelement. Dabei wird $$pic$$ durch den Bildnamen ersetzt
+      und $$thumb$$ durch 'thumb_'+bildname für die Benutzung eines Thumbnails.
+
+    </comment>
+   <resources>
+      <comment>Basisordner für 'from' ist der Ordner dieses XMLS; Basisordner für 'to' ist der Zielordner. Alle relativen Pfadangaben
+         beziehen sich darauf.</comment>
+      <!-- <copy from="myJavascript.js" to="myJavascript.js" />  wird aktuell nicht gebraucht-->
+      <!-- copyfolder from="css" to="css" withsubfolder="true" /> -->
+   </resources>
+   <indexfile name="index_tmp.html">
+    <!-- path ist Pfad  zu  dem  als Parameter übergebenen Bilderverzeichnis  (relativ oder absolut)  
+    ../ bedeutet: im übergeordneten Verzeichnis. 
+    Beim indexfile.name darf kein PFad angegeben werden 
+    Achtung! Wenn ein Pfad angegeben wurde, werden die festen Variablen um den Pfadnamen ergänzt-->
+   </indexfile> 
+   <contentfile name="content.txt" separator="##" linecomment="//">
+    <comment> in dieser Datei stehen alle Bildnamen mit einer Beschreibung. Wenn der Bildname mit dem eines der eingelesenen Dateien 
+    übereinstimmt, wird der Beschreibungstext mit ausgegeben.
+    Der Dateiname beginnt linksbündig und die Beschreibung ist durch den Separator (wenn das Attribut fehlt: ein einzelnes Space) davon getrennt. Der Rest der Zeile wird als Beschreibung betrachtet.
+    Achtung, wenn der Dateiname den Separator enthält, klappt das nicht. Wenn mehrere Separatoren vorkommen, wird für jeden weiteren ein Zeilenwechsel eingefügt.
+    Zeilen die mit dem linecomment-String beginnen, werden ignoriert.
+    Beginnt eine Zeile mit 2 Dollarzeichen ($$) so wird das als Definition einer globalen Variable behandelt, 
+    z.b. $$folddesc$$=Beschreibung des Ordners
+    Es sind aber beliebige Variablen möglich. Sie werden genauso behandelt wie die unten im Element variables definierten. 
+    </comment>
+   </contentfile>
+   <prefix_thumbnails name="thumb_" />
+   <variables>
+   <comment>hier können beliebige Variablen angegeben werden, die im HTML-Code durch den value ersetzt werden.
+   fest definierte variablen sind: 
+   $$pic$$ für den Namen des Bildes (relativer Pfad)
+   $$picNameOnly$$ für den Namen des Bildes (ohne Pfad)
+   $$desc$$ für die Beschreibung des Bildes (aus Element contentfile)
+   $$thumb$$ für den Verweis auf das Thumbnail(=Bildname mit vorangestellem "thumb_")
+   $$video$$ für Videodateien (mp4 und ogg)
+   $$videoNameOnly$$ für den Namen des Videos (ohne Pfad)
+   $$dirname$$ für den Namen (ohne Pfad) des Verzeichnisses, in dem die Bilder sind.
+   $$dirLesbar$$ für $$dirname$$, aber der erste Buchstabe wird in Großbuchstaben, der Resat in Kleinbuschtaben ausgegeben.
+   </comment>
+        <variable varname="$$homepage$$" value="http://fotos.ecaspari.de"/>
+        <variable varname="$$csspath$$" value="$$homepage$$/resources" />
+        <variable varname="$$jspath$$" value="$$homepage$$/resources"/>
+        <variable varname="$$imgpath$$" value="$$homepage$$/resources"/>
+   </variables>
+   <header>
+<![CDATA[
+<!DOCTYPE html>
+<!--
+Erstellt unter Benutzung von
+https://www.w3schools.com/w3css/tryw3css_templates_photo.htm
+https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_photo&stacked=h
+-->
+<html>
+<head>
+    <title>E.Caspari - Bildergalerie</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bildergalerie privater Bilder">
+    <meta name="keywords" content="">
+    <meta name="author" content="Ewald Caspari, Neuwied"/>
+    
+    <link rel="stylesheet" href="$$csspath$$/ec_main.css">
+    <link rel="stylesheet" href="$$csspath$$/w3-4.css">
+    <link rel="stylesheet" href="$$csspath$$/ec_sidenav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="$$jspath$$/ec_javascript.js"></script>
+<!--
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+-->
+
+<style>
+body,h1 {font-family: "Helvetica", sans-serif}
+img {margin-bottom: -7px}
+.w3-row-padding img {margin-bottom: 12px}
+</style>
+</head>
+<body>
+
+<!-- Sidebar /Nav -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br />
+    <a href="$$homepage$$/index.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Startseite</a>
+    <a href="javascript:history.back()" class="w3-bar-item w3-button w3-text-grey w3-hover-black">vorige Seite</a>
+    <a href="$$homepage$$/impressum.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Impressum</a>
+</div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+
+<!-- Header -->
+<div class="w3-opacity">
+<span class="w3-button w3-xxlarge w3-white w3-left" onclick="openNav()"><i class="fa fa-navicon"></i></span> 
+&nbsp;&nbsp;<a href="$$homepage$$/index.html">Startseite</a>&nbsp;&nbsp;
+            <a href="javascript:history.back()">vorige Seite</a>&nbsp;&nbsp;
+            <a href="$$homepage$$/impressum.html">Impressum</a>
+<div class="w3-clear"></div>
+<header class="w3-center w3-margin-bottom">
+  <!-- ##### Titel der Seite anpassen ##### -->
+  <h1><b>Bildergalerie $$dirLesbar$$</b></h1>
+  <!-- #####  Beschreibung der Seite einfügen ##### -->
+  <p><b>$$folderdescription$$</b></p>
+  <p class="w3-padding-16"><button class="w3-button w3-black" onclick="myFunction()">Rahmen umschalten</button><br />
+  <small>um die Bilder in voller Auflösung zu sehen, bitte auf ein Bild klicken oder tippen</small></p>
+</header>
+</div>
+
+<!-- Photo Grid -->
+<div class="w3-row" id="myGrid" style="margin-bottom:128px">
+]]>
+   </header>
+   
+   <!-- hier wird eine Spalte definiert. Die Anzahl der Spalten ist in coldef.number bzw. rowdef.colnums definiert. 
+   Die Position einer Bild- oder Video-Spalte ist mit $$galleryelements$$ festgelegt.
+   In picdef und viddef sind die Definitionen für ein Element enthalten.
+   Achtung! Die Spaltenanzahl und die class in der columndef müssen zusammenpassen:
+   class="w3-quarter" ist 4-Spaltig
+   class="w3-third" ist 3-Spaltig
+   -->
+   <columndef number="4">
+<![CDATA[<div class="w3-quarter">
+  $$galleryelements$$
+  </div>]]>
+   </columndef>
+   
+   <galleryelements>
+   <!-- hier werden Bilder definiert -->
+   <picdef>
+   <![CDATA[$$desc$$<br /><a href="$$pic$$" onclick="return popup(this,600,600)" title="klicken oder tippen zum Vergr&ouml;&szlig;ern">$$pic$$<br /><img src="$$thumb$$" style="width:100%"></a>]]>  
+   </picdef>
+   
+   <!-- hier werden Videos definiert -->
+   <viddef>
+   <![CDATA[<video src="$$video$$" width="400" height="300" poster="0180-IMG_20170527_111809.jpg" autobuffer controls> <div>Ihr Browser unterstützt kein html5</div></video>]]>
+   </viddef>
+   </galleryelements>
+   
+   <footer>
+<![CDATA[
+</div>
+
+<!-- End Page Content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px"> 
+<div class="w3-small w3-center">
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/de/88x31.png" /></a>
+Wenn nicht im Einzelfall besonders gekennzeichnet, stehen alle Fotos auf dieser Seite unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/">Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 3.0 Deutschland Lizenz</a>
+</div>
+<br /> <small><small>besuchen Sie mich auch auf&nbsp;&nbsp;</small></small>
+  <a href="https://www.facebook.com/ewald.caspari" target="_blank" class="w3-hover-text-green"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>&nbsp;&nbsp;
+  <a href="https://de.pinterest.com/ajnormaster/" target="_blank" class="w3-hover-text-green"><i class="fa fa-pinterest-p w3-hover-opacity"></i></a>&nbsp;&nbsp;
+  <a href="http://de.linkedin.com/in/ewaldcaspari" target="_blank" class="w3-hover-text-green"><i class="fa fa-linkedin w3-hover-opacity"></i></a></a>&nbsp;&nbsp;
+  <a href="https://www.xing.com/profile/Ewald_Caspari?sc_o=mxb_p" target="_blank" class="w3-hover-text-green"><i class="fa fa-xing w3-hover-opacity"></i></a></a>&nbsp;&nbsp;
+  <a href="https://handgeschmiedet.com" target="_blank" class="w3-hover-text-green"><i class="fa fa-legal w3-hover-opacity"></i></a></a>&nbsp;&nbsp;
+  
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+
+<script type="text/javascript">
+function oeffnefenster (url) {
+   fenster = window.open(url, "fenster1", "width=600,height=400,status=yes,scrollbars=yes,resizable=yes");
+   fenster.focus();
+}
+</script>
+ 
+<script>
+// Toggle grid padding
+function myFunction() {
+    var x = document.getElementById("myGrid");
+    if (x.className === "w3-row") {
+        x.className = "w3-row-padding";
+    } else { 
+        x.className = x.className.replace("w3-row-padding", "w3-row");
+    }
+}
+
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}  
+var pop = null;
+function popdown() {
+  if (pop && !pop.closed) pop.close();
+}
+function popup(obj,w,h) {
+  var url = (obj.getAttribute) ? obj.getAttribute('href') : obj.href;
+  if (!url) return true;
+  w = (w) ? w += 20 : 150;  // 150px*150px is the default size
+  h = (h) ? h += 25 : 150;
+  var args = 'width='+w+',height='+h+',resizable';
+  popdown();
+  pop = window.open(url,'',args);
+  return (pop) ? false : true;
+}
+window.onunload = popdown;
+window.onfocus = popdown;
+
+</script>
+
+</body>
+</html>
+]]>
+   </footer>
+</galerydefinitions>

@@ -1,0 +1,209 @@
+<galerydefinitions>
+   <comment>
+      Anleitung:
+      im header-Element steht der Beginn des zu erstellenden HTML-Files (als CDATA) und in footer als CDATA das Ende des Files.
+      unter picdef steht, ebenfalls als CDATA, der Code für ein einzelnes Bildelement. Dabei wird $$pic$$ durch den Bildnamen ersetzt
+      und $$thumb$$ durch 'thumb_'+bildname für die Benutzung eines Thumbnails.
+      Sonstige Variablen: siehe unten 
+   </comment>
+   <resources>
+      <comment>Basisordner für 'from' ist der Ordner dieses XMLS; Basisordner für 'to' ist der Zielordner. Alle relativen Pfadangaben
+         beziehen sich darauf.</comment>
+      <!-- <copy from="myJavascript.js" to="myJavascript.js" />  wird aktuell nicht gebraucht-->
+      <!-- copyfolder from="css" to="css" withsubfolder="true" /> -->
+   </resources>
+   <indexfile name="$$dirname$$.html" path="../"/> <!-- path ist Pfad für das Indexfile (relativ oder absolut)  ../ bedeutet: im zum Bilderverzeichnis übergeordneten Verzeichnis. -->
+   <contentfile name="metadaten/content.txt" separator="##" linecomment="//">
+    <comment> in dieser Datei stehen alle Bildnamen mit einer Beschreibung. Wenn der Bildname mit dem eines der eingelesenen Dateien 
+    übereinstimmt, wird der Beschreibungstext mit ausgegeben.
+    Der Dateiname beginnt linksbündig und die Beschreibung ist durch den Separator (wenn das Attribut fehlt: ein einzelnes Space) davon getrennt. Der Rest der Zeile wird als Beschreibung betrachtet.
+    Achtung, wenn der Dateiname den Separator enthält, klappt das nicht. Wenn mehrere Separatoren vorkommen, wird für jeden weiteren ein Zeilenwechsel eingefügt.
+    Zeilen die mit dem linecomment-String beginnen, werden ignoriert.
+    </comment>
+   </contentfile>
+   <prefix_thumbnails name="thumb_" />
+   <variables>
+   <comment>hier können beliebige Variablen angegeben werden, die im HTML-Code durch den value ersetzt werden.
+   fest definierte variablen sind: 
+   $$pic$$ für den Namen des Bildes (relativer Pfad)
+   $$picNameOnly$$ für den Namen des Bildes (ohne Pfad)
+   $$desc$$ für die Beschreibung des Bildes (aus Element contentfile)
+   $$thumb$$ für den Verweis auf das Thumbnail(=Bildname mit vorangestellem "thumb_")
+   $$video$$ für Videodateien (mp4 und ogg)
+   $$videoNameOnly$$ für den Namen des Videos (ohne Pfad)
+   $$dirname$$ für den Namen (ohne Pfad) des Verzeichnisses, in dem die Bilder sind.
+   $$dirLesbar$$ für $$dirname$$, aber der erste Buchstabe wird in Großbuchstaben, der Resat in Kleinbuschtaben ausgegeben.
+   </comment>
+        <variable varname="$$homepage$$" value="https://handgeschmiedet.com"/>
+        <variable varname="$$csspath$$" value="$$homepage$$/resources" />
+        <variable varname="$$jspath$$" value="$$homepage$$/resources"/>
+        <variable varname="$$imgpath$$" value="$$homepage$$/resources"/>
+   </variables>
+   <header>
+<![CDATA[
+<!DOCTYPE html>
+<html>
+<head>
+<title>handgeschmiedet</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="Handgeschmiedete Kunstgegenstände und Schmuck">
+<meta name="keywords" content="Schmied Neuwied, handgeschmiedet, Eisen, Stahl">
+<meta name="author" content="Ewald Caspari, Neuwied"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+weil die nicht https sind, musste ich die kopieren:
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+-->
+<link rel="stylesheet" href="$$csspath$$/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Special+Elite"> 
+<link rel="stylesheet" href="$$csspath$$/ecsmithy.css">
+<!-- <link rel="stylesheet" href="$$csspath$$/font-awesome-4.7.0/css/font-awesome.min.css"> klappt nicht richting, wenn der Fodler nicht als Unterorder des akt. Verz. vorhanden ist -->
+<script type="text/javascript" src="$$jspath$$/ec-mail.js"></script>        
+<script src="https://use.fontawesome.com/a2624ab8e6.js"></script>
+</head>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+<!-- Sidenav/menu -->
+<nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidenav"><br>
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img src="$$imgpath$$/amboss1.jpg" style="width:45%;" class="w3-round"><br><br>
+    <h4 class="w3-padding-0"><b><a href="./index.html">Handgeschmiedet</a></b></h4>
+  </div>
+  <a href="./index.html" class="w3-padding">ÜBER MICH</a> 
+  <a href="./nutz.html" class="w3-padding w3-text-teal">SORTIMENT</a> 
+  <a href="./kontakt.html" class="w3-padding">BESTELLUNG</a>
+  <a href="./kontakt.html" class="w3-padding">KONTAKT</a>
+  <a href="./agb.html" class="w3-padding">AGB</a> 
+   
+  <div class="w3-section w3-padding-top w3-xlarge">
+    <a href="https://www.facebook.com/ewald.caspari" class="w3-hover-white w3-hover-text-indigo w3-show-inline-block" target="_blank"><i class="fa fa-facebook-official"></i></a>
+    <a href="https://de.pinterest.com/ajnormaster/" class="w3-hover-white w3-hover-text-red w3-show-inline-block" target="_blank"><i class="fa fa-pinterest-square"></i></a>
+    <a href="https://www.linkedin.com/in/ewaldcaspari" class="w3-hover-white w3-hover-text-indigo w3-show-inline-block" target="_blank"><i class="fa fa-linkedin"></i></a>
+  </div>  
+  <p>
+</nav>
+
+<!-- Overlay effect when opening sidenav on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header class="w3-container">
+    <span class="w3-opennav w3-hide-large w3-xxlarge w3-hover-text-grey w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <img src="$$imgpath$$/schmiedemarke.png" style="width:100px;" class="w3-circle w3-left">
+    <img src="$$imgpath$$/amboss1.jpg" style="width:85px;" class="w3-circle w3-center w3-margin w3-hide-large w3-hover-opacity">
+    <h1><b>Handgeschmiedet</b></h1>
+    <h2><b>mein Sortiment</b></h2>
+    <div class="w3-section w3-bottombar w3-padding-16" id="mySideNav2">
+      <span class="w3-margin-right">Auswahl:</span> 
+      <a class="w3-btn w3-round-large w3-grey" href="./nutz.html"><i class="fa fa-home w3-margin-right"></i>Haus</a>
+      <a class="w3-btn w3-round-large w3-white" href="./garten.html"><i class="fa fa-tree w3-margin-right"></i>Garten</a>
+      <a class="w3-btn w3-round-large w3-white" href="./schmuck.html"><i class="fa fa-diamond w3-margin-right"></i>Schmuck</a>
+      <a class="w3-btn w3-round-large w3-white" href="./material.html"><i class="fa fa-info w3-margin-right"></i>Materialinfos</a>
+    </div>
+    <p>Alle Teile auf dieser Seite sind frei handgeschmiedet, die meisten aus einem einzigen Stück.
+    Wenn nicht ausdrücklich anders beschrieben, ist das Material einfacher Stahl und nicht rostfrei. Sie sind entweder mit Öl (schwarz) oder Wachs (Stahlfarbe sichtbar) behandelt, um das Rosten zu verringern. (siehe auch  <a href="./material.html">Materialinformationen</a>)</p>
+   <p>$$folderdescription$$</p>
+  </header>
+]]>
+   </header>
+   
+   <!-- hier wird eine Spalte definiert. Die Anzahl der Spalten ist in coldef.number bzw. rowdef.colnums definiert. 
+   Entweder Spaltendefinitionen oder Zeilendefinitionen nutzen. Beides  zusammen würde das Programm verwirren.
+   Die Position einer Bild- oder Video-Spalte ist mit $$galleryelements$$ festgelegt.
+   In picdef und viddef sind die Definitionen für ein Element enthalten.
+   Achtung! Die Spaltenanzahl und die class in der columndef müssen zusammenpassen:
+   class="w3-quarter" ist 4-Spaltig
+   class="w3-third" ist 3-Spaltig
+   -->
+<!-- 
+   <columndef number="4">
+<![CDATA[<div class="w3-quarter">
+  $$galleryelements$$
+  </div>]]>
+   </columndef>
+-->
+   <rowdef colnum="4">
+<![CDATA[<div class="w3-row-padding">
+  $$galleryelements$$
+  </div>
+  <div class="clearfix"></div>
+  ]]>
+   </rowdef>
+
+   
+   <galleryelements>
+   <!-- hier werden Bilder definiert -->
+   <picdef>
+   <![CDATA[    
+   <div class="w3-quarter w3-container">
+      <a href="$$pic$$" target="_blank"> <img src="$$pic$$" alt="$$pic$$" style="width:100%" class="w3-hover-opacity"></a>
+      <div class="w3-container w3-white">
+        <p><b>$$desc$$</b></p>
+        <p><small>$$picNameOnly$$</small></p>
+        <p>Preis: $$preis$$ € pro Stück<br />
+           Material: Stahl<br />
+           Größe $$groesse$$</p>
+        <p>$$obfl$$</p>
+      </div>
+    </div>
+   ]]>  
+   </picdef>
+   
+   <!-- hier werden Videos definiert -->
+   <viddef>
+   <![CDATA[<p>keine Videos definiert (gefunden: $$video$$)</p>
+   ]]>
+   </viddef>
+   </galleryelements>
+   
+   <footer>
+<![CDATA[
+  <footer class="w3-container w3-padding-32 w3-white">
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <h3>Fußnote</h3>
+      <p>Alle abgebildeten Gegenstände sind nur beispielhaft. Da jedes einzelne Stück vollständig handgearbeitet ist, sind Abweichungen in Form und Größe unvermeidlich.</p>
+      <p><a href="./impressum.html" ><b>Impressum</b></a></p>
+      <p><small><i class="fa fa-copyright w3-margin-right"></i>Copyright by E.Caspari  -  based on Portfolio Template by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></small></p>
+    </div>
+  </div>
+  </footer>
+
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidenav
+function w3_open() {
+    document.getElementById("mySidenav").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidenav").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+<noframes>
+    Hier sind meine sonstigen Internet-Auftritt bzw. betreute Seiten.
+        <a href="http://www.jutta-caspari.de">Naturheilpraxis Jutta Caspari</a>&nbsp;&nbsp;
+        <a href="http://osteopath-neuwied.de">Naturheilpraxis Jutta Caspari</a>&nbsp;&nbsp;
+        <a href="http://osteopathie-neuwied.info">Naturheilpraxis Jutta Caspari</a>&nbsp;&nbsp;
+        <a href="http://www.windforfun.de">unsere Segel-Seite</a>&nbsp;&nbsp;
+        <a href="http://archer.ecaspari.de">die Attic-Archer</a>&nbsp;&nbsp;
+        <a href="http://fotos.ecaspari.de">Fotoserien von Ewald Caspari</a>&nbsp;&nbsp;
+</noframes>
+</body>
+</html>
+]]>
+   </footer>
+</galerydefinitions>

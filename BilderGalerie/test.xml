@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galerydefinitions>
+	<header>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;!--
+https://www.w3schools.com/w3css/tryw3css_templates_photo.htm
+https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_photo&amp;stacked=h
+--&gt;
+    &lt;title&gt;E.Caspari - Bildergalerie&lt;/title&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;meta name="description" content="Bildergalerie privater Bilder"&gt;
+    &lt;meta name="keywords" content=""&gt;
+    &lt;meta name="author" content="Ewald Caspari, Neuwied"/&gt;
+    
+    &lt;link rel="stylesheet" href=".\css\main.css"&gt;
+    &lt;link rel="stylesheet" href=".\css\w3-4.css"&gt;
+    &lt;link rel="stylesheet" href=".\css\sidenav.css"&gt;
+    &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+    &lt;script type="text/javascript" src="./myJavascript.js"&gt;&lt;/script&gt;
+&lt;!--
+&lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+--&gt;
+
+&lt;style&gt;
+body,h1 {font-family: "Helvetica", sans-serif}
+img {margin-bottom: -7px}
+.w3-row-padding img {margin-bottom: 12px}
+&lt;/style&gt;
+&lt;body&gt;
+
+&lt;!-- Sidebar /Nav --&gt;
+&lt;div id="mySidenav" class="sidenav"&gt;
+  &lt;a href="javascript:void(0)" class="closebtn" onclick="closeNav()"&gt;&amp;times;&lt;/a&gt;&lt;br /&gt;
+    &lt;a href="../index.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black"&gt;Übersicht&lt;/a&gt;
+    &lt;a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black"&gt;Kontakt&lt;/a&gt;
+    &lt;a href="../impressum.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black"&gt;Impressum&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- !PAGE CONTENT! --&gt;
+&lt;div class="w3-content" style="max-width:1500px"&gt;
+
+&lt;!-- Header --&gt;
+&lt;div class="w3-opacity"&gt;
+&lt;span class="w3-button w3-xxlarge w3-white w3-right" onclick="openNav()"&gt;&lt;i class="fa fa-navicon"&gt;&lt;/i&gt;&lt;/span&gt; 
+&lt;div class="w3-clear"&gt;&lt;/div&gt;
+&lt;header class="w3-center w3-margin-bottom"&gt;
+  &lt;h1&gt;&lt;b&gt;Bildergalerie&lt;/b&gt;&lt;/h1&gt;
+  &lt;p&gt;&lt;b&gt;Beschreibung der Seite&lt;/p&gt;
+  &lt;p class="w3-padding-16"&gt;&lt;button class="w3-button w3-black" onclick="myFunction()"&gt;Rahmen umschalten&lt;/button&gt;&lt;/p&gt;
+&lt;/header&gt;
+&lt;/div&gt;
+
+&lt;!-- Photo Grid --&gt;
+&lt;div class="w3-row" id="myGrid" style="margin-bottom:128px"&gt;
+&lt;!-- in dieser Sektion können 3 Spalten Bilder dargestellt werden. --&gt;
+  &lt;div class="w3-third"&gt;</header>
+	<picdef>&lt;a href="$$pic$$" onclick="return popup(this)" title="Das ist das vergößerte Fenster"&gt;&lt;img src="$$thumb$$" style="width:100%"&gt;&lt;/a&gt;</picdef>
+	<footer>&lt;/div&gt;
+
+  &lt;div class="w3-third"&gt;
+  Spalte 2
+  &lt;img src="./test0001.jpg" style="width:100%"&gt;
+&lt;!--
+    &lt;img src="./tuer-und-tor-img/tor-0070.jpg" style="width:100%"&gt;
+    --&gt;
+  &lt;/div&gt;
+
+  &lt;div class="w3-third"&gt;
+      Spalte 3
+    &lt;a href="test0001.jpg" onclick="window.open(this.href,'_blank','width=400 ,height=400'); return false;"&gt;&lt;img src="test0001.jpg" alt="goßes Bild" style="width:100%"/&gt;&lt;/a&gt;
+&lt;!--
+&lt;img src="./tuer-und-tor-img/tor-0120.jpg" style="width:100%"&gt;
+--&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- End Page Content --&gt;
+&lt;/div&gt;
+
+&lt;!-- Footer --&gt;
+&lt;footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px"&gt; 
+&lt;div class="w3-small w3-center"&gt;
+&lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"&gt;&lt;img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/de/88x31.png" /&gt;&lt;/a&gt;
+Wenn nicht im Einzelfall besonders gekennzeichnet, stehen alle Fotos auf dieser Seite unter einer &lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"&gt;Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 3.0 Deutschland Lizenz&lt;/a&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+  &lt;a href="https://www.facebook.com/ewald.caspari" target="_blank" class="w3-hover-text-green"&gt;&lt;i class="fa fa-facebook-official w3-hover-opacity"&gt;&lt;/i&gt;&lt;/a&gt;&nbsp;&nbsp;
+  &lt;a href="https://de.pinterest.com/ajnormaster/" target="_blank" class="w3-hover-text-green"&gt;&lt;i class="fa fa-pinterest-p w3-hover-opacity"&gt;&lt;/i&gt;&lt;/a&gt;&nbsp;&nbsp;
+  &lt;a href="http://de.linkedin.com/in/ewaldcaspari" target="_blank" class="w3-hover-text-green"&gt;&lt;i class="fa fa-linkedin w3-hover-opacity"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/a&gt;&nbsp;&nbsp;
+  &lt;a href="https://www.xing.com/profile/Ewald_Caspari?sc_o=mxb_p" target="_blank" class="w3-hover-text-green"&gt;&lt;i class="fa fa-xing w3-hover-opacity"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/a&gt;&nbsp;&nbsp;
+  &lt;a href="https://handgeschmiedet.com" target="_blank" class="w3-hover-text-green"&gt;&lt;i class="fa fa-legal w3-hover-opacity"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/a&gt;&nbsp;&nbsp;
+  
+  &lt;p class="w3-medium"&gt;Powered by &lt;a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green"&gt;w3.css&lt;/a&gt;&lt;/p&gt;
+&lt;/footer&gt;
+
+
+&lt;script type="text/javascript"&gt;
+function oeffnefenster (url) {
+   fenster = window.open(url, "fenster1", "width=600,height=400,status=yes,scrollbars=yes,resizable=yes");
+   fenster.focus();
+}
+&lt;/script&gt;
+ 
+&lt;script&gt;
+// Toggle grid padding
+function myFunction() {
+    var x = document.getElementById("myGrid");
+    if (x.className === "w3-row") {
+        x.className = "w3-row-padding";
+    } else { 
+        x.className = x.className.replace("w3-row-padding", "w3-row");
+    }
+}
+
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}  
+var pop = null;
+function popdown() {
+  if (pop &amp;&amp; !pop.closed) pop.close();
+}
+function popup(obj,w,h) {
+  var url = (obj.getAttribute) ? obj.getAttribute('href') : obj.href;
+  if (!url) return true;
+  w = (w) ? w += 20 : 150;  // 150px*150px is the default size
+  h = (h) ? h += 25 : 150;
+  var args = 'width='+w+',height='+h+',resizable';
+  popdown();
+  pop = window.open(url,'',args);
+  return (pop) ? false : true;
+}
+window.onunload = popdown;
+window.onfocus = popdown;
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</footer>
+</galerydefinitions>
